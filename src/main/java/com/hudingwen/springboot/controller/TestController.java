@@ -5,11 +5,13 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageRowBounds;
 import com.hudingwen.springboot.config.PersonInfoConfig;
 import com.hudingwen.springboot.entity.Book;
+import com.hudingwen.springboot.entity.Test;
 import com.hudingwen.springboot.exception.BusinessException;
 import com.hudingwen.springboot.exception.Code;
 import com.hudingwen.springboot.exception.SystemException;
 import com.hudingwen.springboot.mapper.BookMapper;
 import com.hudingwen.springboot.mapperPlus.BookMapperPlus;
+import com.hudingwen.springboot.mapperPlus.TestMapperPlus;
 import com.hudingwen.springboot.quartz.TestJob;
 import com.hudingwen.springboot.service.ScheduleService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -58,6 +60,9 @@ public class TestController {
 
     @Autowired
     private BookMapper bookMapper;
+
+    @Autowired
+    private TestMapperPlus testMapperPlus;
 
     @Operation(summary = "测试")
     @GetMapping("/test")
@@ -165,6 +170,14 @@ public class TestController {
     public List<Book> Test18(){
         PageRowBounds rowBounds = new PageRowBounds(1, 1);
         List<Book> book = bookMapper.findBookPage(rowBounds);
+        return book;
+    }
+
+    @GetMapping("/test19")
+    public List<Test> Test19(){
+        Page<Object> objects = PageHelper.startPage(1, 100);
+        List<Test> book = testMapperPlus.findBook();
+        long total = objects.getTotal();
         return book;
     }
 

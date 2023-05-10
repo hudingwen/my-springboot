@@ -20,10 +20,11 @@ spring:
     port: 6379
   #数据库相关配置
   datasource:
-    url: jdbc:mysql://localhost:3306/spring
-    username: root
-    password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver #com.mysql.jdbc.Driver
+    url: jdbc:dm://192.168.0.70:5236?LobMode=1&schema=LIMS
+    username: SYSDBA
+    password: SYSDBA001
+    driver-class-name: dm.jdbc.driver.DmDriver
+    type: com.alibaba.druid.pool.DruidDataSource
   #quartz定时任务相关配置
   quartz:
     job-store-type: memory # Job 存储器类型。默认为 memory 表示内存，可选 jdbc 使用数据库。
