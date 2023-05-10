@@ -92,6 +92,7 @@
             <optional>true</optional>
             <version>1.18.0</version>
         </dependency>
+        <!-- 达梦依赖 -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
